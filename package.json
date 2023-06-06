@@ -2,9 +2,9 @@
 	"name": "fcc-imperial-metric-converter-boilerplate",
 	"version": "1.0.0",
 	"description": "Metric / Imperial Unit Converter",
-	"main": "server.js",
+	"main": "server.mjs",
 	"scripts": {
-		"start": "node server.js",
+		"start": "node -r dotenv/config server.mjs",
 		"test": "mocha ./tests/ --ui tdd"
 	},
 	"dependencies": {

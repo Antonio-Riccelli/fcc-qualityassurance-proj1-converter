@@ -1,6 +1,6 @@
-function ConvertHandler() {
+function convertHandler() {
 
-  this.getNum = function (input) {
+  const getNum =  (input) => {
     const regex = /[a-zA-Z]/;
     const arrFromStr = input.split("");
     let num;
@@ -15,7 +15,7 @@ function ConvertHandler() {
     return num;
   };
 
-  this.getUnit = function (input) {
+  const getUnit = (input) => {
     const regex = /[a-zA-Z]/;
     const arrFromStr = input.split("");
     let unit;
@@ -29,7 +29,7 @@ function ConvertHandler() {
     return unit.toLowerCase();
   };
 
-  this.getReturnUnit = function (initUnit) {
+  const getReturnUnit = (initUnit) => {
     const lowerCaseInitUnit = initUnit.toLowerCase();
     let switchedUnit;
 
@@ -60,7 +60,7 @@ function ConvertHandler() {
     return switchedUnit;
   };
 
-  this.spellOutUnit = function (unit) {
+  const spellOutUnit = (unit) => {
     let result;
     if (unit === "gal") {
       result = "gallons";
@@ -89,11 +89,11 @@ function ConvertHandler() {
     return result;
   };
 
-  this.convert = function (initNum, initUnit) {
+  const convert = (initNum, initUnit) => {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    // You can convert 'gal' to 'L' and vice versa. (1 gal to 3.78541 L)
+
     let result;
     if (initUnit === "gal") {
       result = initNum * galToL;
@@ -119,7 +119,7 @@ function ConvertHandler() {
     return result;
   };
 
-  this.getString = function (initNum, initUnit, returnNum, returnUnit) {
+  const getString = (initNum, initUnit, returnNum, returnUnit) => {
     let result;
     if (returnNum === "invalid number" && returnUnit === "invalid unit") {
       return "invalid number and unit";
@@ -136,4 +136,4 @@ function ConvertHandler() {
 
 }
 
-module.exports = ConvertHandler;
+export default convertHandler;

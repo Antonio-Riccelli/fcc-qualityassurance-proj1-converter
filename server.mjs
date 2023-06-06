@@ -1,18 +1,21 @@
 'use strict';
 
-const express     = require('express');
-const bodyParser  = require('body-parser');
-const expect      = require('chai').expect;
-const cors        = require('cors');
-require('dotenv').config();
+import express from "express"
+import bodyParser from "body-parser"
+import pkg from "chai";
+const {expect} = pkg;
+import cors from "cors"
+import apiRouter from './routes/api.mjs';
+// require('dotenv').config();
 
-const apiRoutes         = require('./routes/api.js');
-const fccTestingRoutes  = require('./routes/fcctesting.js');
-const runner            = require('./test-runner');
+// const apiRoutes         = require('./routes/api.js');
+import fccTestingRoutes  from './routes/fcctesting.js';
+import runner from './test-runner.js';
 
 let app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/api', apiRouter);
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
 
@@ -27,9 +30,6 @@ app.route('/')
 
 //For FCC testing purposes
 fccTestingRoutes(app);
-
-//Routing for API 
-apiRoutes(app);  
     
 //404 Not Found Middleware
 app.use(function(req, res, next) {
@@ -56,4 +56,4 @@ app.listen(port, function () {
   }
 });
 
-module.exports = app; //for testing
+export default app; //for testing
